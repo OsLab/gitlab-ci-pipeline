@@ -19,9 +19,13 @@ set -xe \
 		ca-certificates \
 		curl \
 		apache-ant \
+		libpng-dev \
 	&& docker-php-ext-install \
 		intl \
 		zip \
 		pdo_mysql \
 		xsl \
-	&& pecl install xdebug
+		opcache \
+		gd \
+		iconv \
+	&& pecl install xdebug redis
