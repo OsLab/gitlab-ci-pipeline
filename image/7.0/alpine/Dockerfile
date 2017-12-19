@@ -1,4 +1,4 @@
-FROM php:7.0-alpine
+FROM php:7.0-cli-alpine
 
 # COPY INSTALL SCRIPTS
 COPY ./image/*.sh /tmp/
@@ -11,9 +11,8 @@ WORKDIR /tmp
 RUN sh ./env.sh && \
     sh ./apk.sh && \
     sh ./composer.sh && \
-    sh ./qa.sh
+    sh ./qa.sh && \
+    sh ./register.sh && \
+    sh ./apk-clean.sh
 
 WORKDIR /app
-
-RUN echo -e '#! /bin/sh \n /usr/local/bin/php -dzend_extension=xdebug.so -dxdebug.remote_enable=1 $*' >> /usr/local/bin/php-xdebug && chmod +x /usr/local/bin/php-xdebug
-RUN echo -e 'extension=redis.so' > /usr/local/etc/php/conf.d/redis.ini

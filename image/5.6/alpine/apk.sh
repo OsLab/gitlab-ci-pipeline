@@ -23,9 +23,8 @@ set -xe \
 		libcurl \
 		openssl-dev \
 	&& docker-php-ext-install \
-	    intl \
 		zip \
 		pdo_mysql \
 		opcache \
 		iconv \
-	&& pecl install xdebug redis mongodb xsl gd
+	&& pecl install xdebug redis mongo intl xsl gd

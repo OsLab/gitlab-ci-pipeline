@@ -19,8 +19,13 @@ set -xe \
 		ca-certificates \
 		curl \
 		apache-ant \
+		libtool \
+		libcurl \
+		openssl-dev \
 	&& docker-php-ext-install \
-		intl \
+	    intl \
 		zip \
 		pdo_mysql \
-		xsl
+		opcache \
+		iconv \
+	&& pecl install redis mongodb xsl gd
